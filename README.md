@@ -11,4 +11,4 @@ Este proyecto lo puedes descargar y modificarlo si deseas, tambien puedes hacern
 
 * Los demas modulos que son parte del proyecto los puedes descargar una vez tengas el proyecto en tu ordenador *
 * npm init
->> Lo haras estando en la carpeta del proyecto.
+> > Lo haras estando en la carpeta del proyecto.
