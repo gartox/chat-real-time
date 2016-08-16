@@ -7684,26 +7684,31 @@ var _randomcolor2 = _interopRequireDefault(_randomcolor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var socket = (0, _socket2.default)('http://localhost:3000');
+//Este es un archivo js del front-end y en este estamos usando ecmascript6 con babel
+var socket = (0, _socket2.default)('http://localhost:3000'); //En una constante declaramos la conexion al servidor con socket.io
 
-var usuario = localStorage.getItem('usuario') || prompt('Introduce tu nombre de usuario!');
-var color = localStorage.getItem('color') || (0, _randomcolor2.default)();
+//importamos los modulos que vamos a usar, en este traemos el modulo de sockt.io para el cliente
+var usuario = localStorage.getItem('usuario') || prompt('Introduce tu nombre de usuario!'); //Le decimos que la variable tendra un valor guardado en un localstorage si no existe valor que nos envie un popup y nos pida agregemos un valor
+var color = localStorage.getItem('color') || (0, _randomcolor2.default)(); //Usamos el modulo randomcolor para generar un color en hexadecimal si existe valor lo agregamos a la variable color y si no el modulo lo va a generar
 
-localStorage.setItem('usuario', usuario);
-localStorage.setItem('color', color);
+localStorage.setItem('usuario', usuario); //Seteamos el valor al localstorage usuario y le decimos que su valor sera el de la variable usuario
+localStorage.setItem('color', color); //Hacemos lo mismo que con el localstorage usuario
 
 function mensaje(e) {
-  var mensaje = document.getElementById('mensaje');
-  socket.emit('mensaje', { mensaje: mensaje.value, usuario: localStorage.getItem('usuario'), color: localStorage.getItem('color') });
-  mensaje.value = '';
+  //Creamos una funcion que se ejecutara cuado le demos click a enviar
+  var mensaje = document.getElementById('mensaje'); //Obetenemos el contexto del input mensaje
+  socket.emit('mensaje', { mensaje: mensaje.value, usuario: localStorage.getItem('usuario'), color: localStorage.getItem('color') }); //Emitimos el valor del input, el nombre de usuario y el color al canal o socket llamado mensaje
+  mensaje.value = ''; //Limpiamos el input
 }
 
 socket.on('mensajeAll', function (data) {
-  var mensajes = document.getElementById('chat');
+  //Escuchamos el al canal mensajeAll y recibimos los datos que nos envia el servidor
+  var mensajes = document.getElementById('chat'); //Obtenemos el contexto del contenedor donde mostraremos los mensaje
   mensajes.innerHTML = mensajes.innerHTML == '' ? '<li>' + data.mensaje + '<li>' : mensajes.innerHTML + ' <li><b style="color:' + data.color + '">' + data.usuario + '</b>: ' + data.mensaje + '</li>';
+  //Agregamos al html del contenedor los valores de le mesnaje en una lista y la filtramos con un operador ternario
 });
 
-document.getElementById('enviar').addEventListener('click', mensaje);
+document.getElementById('enviar').addEventListener('click', mensaje); //Con este ke decimos que escuche un evento en el boton enviar y cuando el evento  click se ejecute, ejecute la funcion mensaje.
 
 },{"randomcolor":1,"socket.io-client":2}],50:[function(require,module,exports){
 
