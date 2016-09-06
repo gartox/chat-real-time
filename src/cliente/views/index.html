@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="css/main.css" rel="stylesheet">
   <title>Chat en tiempo real</title>
 </head>
 <body>
-  <section id="chat-contenedor">
+  <header>
+    <div class="contenedor">
+      <div class="push-bottom">
+        <img src="http://nodeschool.io/images/schoolhouse.svg" alt="nodeschool logo">
+        <h1 class="name center">Nodeschool Tabasco</h1>
+        <p class="subtitle center">Creando un chat real time con nodeJS y Socket.IO.</p>          
+      </div>
+    </div>
+  </header>
+  <article id="chat-contenedor">
     <ul id="chat">
       
     </ul>
+  </article>
+  <section class="contenedor-envio-mensajes">
+    <textarea type="texto" id="mensaje"></textarea> <button id="enviar">Enviar</button>
   </section>
-  <input type="texto" id="mensaje"> <button id="enviar">Enviar</button>
-  <script src="chat.js"></script>
+  <script src="js/chat.js"></script>
 </body>
 </html>
